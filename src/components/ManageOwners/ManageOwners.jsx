@@ -72,6 +72,7 @@ class ManageOwners extends Component {
                 
                 </thead>
                 <tbody>
+                    {/* MAP OWNERS STORE TO PROPS */}
                         {/* {owners.map(each => (
                         <tr key={each.owner_id}>
                             <td>{each.name}</td>
