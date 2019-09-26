@@ -4,7 +4,7 @@ import  { connect } from 'react-redux';
 // import './Nav.css';
 
 const Nav = (props) => (
-    <div>
+    <div className="nav">
         <Link to="/">Dashboard</Link>
         <br />
         <Link to="/ManageOwners">Manage Owners</Link>

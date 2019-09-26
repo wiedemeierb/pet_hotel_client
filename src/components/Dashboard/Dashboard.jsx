@@ -37,7 +37,7 @@ class Dashboard extends Component {
     };
 
     handleDeletePet = (id) => {
-        // console.log('handleDeletePet is clicked')
+        console.log('handleDeletePet is clicked')
         // this.props.dispatch({
         //     type: 'DELETE_PET',
         //     payload: {id: id}
@@ -52,10 +52,16 @@ class Dashboard extends Component {
         console.log(this.state)
     }
 
+    handleChangeAddOwner = (event) => {
+        this.setState({
+            owner_name: event.target.value
+        })
+    }
+
     render(){
         // let historyTable = this.props.reduxStore.map((allPets) => {
         //     return(<tr key={allPets.id}>
-        //         <td>{allPets.owner.name}</td>
+        //         <td>{allPets.owner_name}</td>
         //         <td>{allPets.pet_name}</td>
         //         <td>{allPets.pet_breed}</td>
         //         <td>{allPets.pet_color}</td>
@@ -86,14 +92,21 @@ class Dashboard extends Component {
                 name="pet_breed"
                 value={this.state.pet_breed}
                 onChange={this.handleChangeForInputs('pet_breed')} />
-            <select>
-                <option value="Owner"></option>
+            <select defaultValue={'DEFAULT'} value={this.state.value} onChange={this.handleChangeAddOwner}>
+                <option value="DEFAULT">Owner Name</option>
+                <option>Brandon</option>
+                
+                {/* {this.props.reduxStore.map(allOwners => {
+                    return(
+                        <option value={allOwners.id} key={allOwners.id}>{this.props.reduxStore.owner_name}</option>
+                    )
+                })} */}
             </select>
             <button onClick={this.handleSubmit}>SUBMIT</button>
             <br />
             <h2>History</h2>
             {/* table should eventually have its own component */}
-            <table>
+                <table class="table table-dark">
                 <thead>
                     <tr>
                         <th>Owner</th>
@@ -120,10 +133,8 @@ class Dashboard extends Component {
                     </tr>
                 </tbody>
                 <tfoot>
-
                 </tfoot>
             </table>
-
             </>
         )
     }
