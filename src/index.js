@@ -25,8 +25,6 @@ let dummydata = {
 ]
 }
 
-
-
 ///REDUCERS HERE
 const addPetReducer = (state =[], action) => {
     switch (action.type) {
