@@ -5,12 +5,14 @@ import { connect } from 'react-redux';
 import './App.css';
 import Dashboard from '../Dashboard/Dashboard';
 import ManageOwners from '../ManageOwners/ManageOwners';
+import Nav from '../Nav/Nav';
 
 class App extends Component {
   render() {
     return(
       <Router>
         <div>
+          <Nav />
           <Route path='/' exact component={Dashboard} />
           <Route path='/ManageOwners' exact component={ManageOwners} />
         </div>
