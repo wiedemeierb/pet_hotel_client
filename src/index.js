@@ -111,7 +111,7 @@ function* addOwner(action) {
 function* deleteOwner(action) {
     try {
         console.log('in deleteOwner saga, owner id:', action.payload);
-        yield axios.delete(`/ADD DELETE OWNER URL HEREEEEE/${action.payload}`)
+        yield axios.delete(`/api/owners/delete/${action.payload}`)
         yield put({
             type: 'GET_OWNERS'
         })
