@@ -5,10 +5,23 @@ import { connect } from 'react-redux';
 class ManageOwners extends Component {
     componentDidMount() {
         this.getOwners();
+
+        //********DELETE ME LATER
+        this.dummyData();
     }
 
     state = {
         owner: ''
+    }
+
+
+    //DUMMY DATA TO CHECK MAPSTATETOPROPS********DELETE ME LATER
+    dummyData = () => {
+        console.log('in get dummyData');
+        
+        this.props.dispatch({
+            type: 'DUMMY_DATA'
+        })
     }
 
     //ON LOAD, DISPATCHES A TYPE TO GET ALL OWNERS IN THE DATABASE
@@ -73,25 +86,31 @@ class ManageOwners extends Component {
                 </thead>
                 <tbody>
                     {/* MAP OWNERS STORE TO PROPS */}
-                        {/* {owners.map(each => (
-                        <tr key={each.owner_id}>
+                        {this.props.owners.map(each => (
+                        <tr key={each.id}>
                             <td>{each.name}</td>
                             <td>Number of Pets</td>
-                            <td><button onClick={() => this.handleDelete(each.owner_id)}>delete</button>/td>
+                            <td><button onClick={() => this.handleDelete(each.id)}>delete</button></td>
                         </tr>
-                    ))} */}
+                    ))}
 
 
 
 
                         {/* THIS IS DUMMY DATA TO BE DELETED */}
-                    <tr>
+                        
+                    {/* <tr>
                         <td>Chris</td>
                         <td>2</td>
                         <td><button>delete</button></td>
-                    </tr>
+                    </tr> */}
                 </tbody>
             </table>
+            <br />
+                <br />
+                <br />
+                <br />
+                {/* {JSON.stringify(this.props.reduxStore.getOwnersReducer.owners)} */}
             </>
         )
     }
@@ -100,7 +119,11 @@ class ManageOwners extends Component {
 
 //GET OWNERS AND NUMBER OF PETS REDUCER
 const mapStateToProps = reduxStore => ({
-    owners: reduxStore.getOwnersReducer
+    // owners: reduxStore.getOwnersReducer
+
+    //DUMMYDATA REDUXSTORE********DELETE ME LATER
+    owners: reduxStore.getOwnersReducer.owners
+    // reduxStore
 })
 
 export default connect(mapStateToProps)(ManageOwners);

@@ -10,6 +10,23 @@ import { createStore, combineReducers, applyMiddleware } from 'redux';
 import { takeEvery, put } from 'redux-saga/effects'
 import axios from 'axios'
 
+
+///DUMMY DATA TO MAP PROPS ON MANAGE OWNERS PAGE********DELETE ME LATER
+let dummydata = {
+    owners: [
+    {
+        id: 1,
+        name: 'Chris'
+    }, 
+    {
+        id: 2,
+        name: 'Bart'
+    }
+]
+}
+
+
+
 ///REDUCERS HERE
 const addPetReducer = (state =[], action) => {
     switch (action.type) {
@@ -20,10 +37,15 @@ const addPetReducer = (state =[], action) => {
     }
 }
 
-const getOwnersReducer = (state=[], action) => {
+const getOwnersReducer = (state = dummydata, action) => {
     switch(action.type) {
         case 'SET_OWNERS' :
             return action.payload
+
+        ///THIS CASE IS FOR THE DUMMY DATA ON MANAGE OWNERS PAGE********DELETE ME LATER
+        case 'DUMMY_DATA' :
+            console.log('in dummydata:', dummydata);
+            return dummydata
         default:
             return state;
     }
