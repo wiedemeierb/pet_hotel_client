@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 // import { HashRouter as Router, Route, Redirect, Switch, } from 'react-router-dom';
-import { HashRouter as Router } from 'react-router-dom';
+import { HashRouter as Router, Route } from 'react-router-dom';
 import { connect } from 'react-redux';
 import './App.css';
 import Dashboard from '../Dashboard/Dashboard';
@@ -11,9 +11,8 @@ class App extends Component {
     return(
       <Router>
         <div>
-          <h1>Pet Hotel - Python</h1>
-          <Dashboard />
-          <ManageOwners />
+          <Route path='/' exact component={Dashboard} />
+          <Route path='/ManageOwners' exact component={ManageOwners} />
         </div>
       </Router>
     )
