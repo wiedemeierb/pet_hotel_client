@@ -13,7 +13,6 @@ class Dashboard extends Component {
         pet_breed: '',
         owner_name: '',
         check_in: 'no',
-        user_id: '',
     }
 
     getHistory = () => {
@@ -107,7 +106,7 @@ class Dashboard extends Component {
             <br />
             <h2>History</h2>
             {/* table should eventually have its own component */}
-            <table>
+                <table class="table table-dark">
                 <thead>
                     <tr>
                         <th>Owner</th>
