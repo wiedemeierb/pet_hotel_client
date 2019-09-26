@@ -3,9 +3,19 @@ import { connect } from 'react-redux';
 // import { HashRouter as Router } from 'react-router-dom';
 
 class ManageOwners extends Component {
+    componentDidMount() {
+        this.getOwners();
+    }
 
     state = {
         owner: ''
+    }
+
+    //ON LOAD, DISPATCHES A TYPE TO GET ALL OWNERS IN THE DATABASE
+    getOwners = () => {
+        this.props.dispatch({
+            type: 'GET_OWNERS'
+        })
     }
 
     handleChangeInput = (event) => {
@@ -48,7 +58,9 @@ class ManageOwners extends Component {
                 </thead>
                 <tbody>
                     <tr>
-                        <td>Dummy Data</td>
+                        <td>Chris</td>
+                        <td>2</td>
+                        <td><button>delete</button></td>
                     </tr>
                 </tbody>
             </table>
@@ -61,4 +73,9 @@ class ManageOwners extends Component {
 
 // });
 
-export default connect()(ManageOwners);
+//GET OWNERS AND NUMBER OF PETS REDUCER
+const mapStateToProps = reduxStore => ({
+    reduxStore
+})
+
+export default connect(mapStateToProps)(ManageOwners);
