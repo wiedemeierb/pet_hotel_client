@@ -5,9 +5,12 @@ import  { connect } from 'react-redux';
 
 const Nav = (props) => (
     <div className="nav">
-        <Link to="/">Dashboard</Link>
-        <br />
-        <Link to="/ManageOwners">Manage Owners</Link>
+        <h2>Pet Hotel</h2>
+    
+        <div className="links">
+            <Link to="/">Dashboard</Link>
+            <Link to="/ManageOwners">Manage Owners</Link>
+        </div>
     </div>
 )
 

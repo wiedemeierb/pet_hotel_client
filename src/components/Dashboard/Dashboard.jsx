@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+
 // import { HashRouter as Router } from 'react-router-dom';
 
 class Dashboard extends Component {
@@ -70,9 +71,11 @@ class Dashboard extends Component {
         // })
         return(
             <>
-            <h2>Dashboard Webpage</h2>
+            <br />
             <h2>Add Pet</h2>
+            <br />
             {/* {JSON.stringify(this.state)} */}
+            <div className="inputsDashboard">
             <input 
                 placeholder='Pet Name' 
                 type="text"
@@ -103,10 +106,11 @@ class Dashboard extends Component {
                 })} */}
             </select>
             <button onClick={this.handleSubmit}>SUBMIT</button>
+            </div>
             <br />
             <h2>History</h2>
             {/* table should eventually have its own component */}
-                <table class="table table-dark">
+                <table class="table table-striped table-bordered table-hover">
                 <thead>
                     <tr>
                         <th>Owner</th>
@@ -114,7 +118,8 @@ class Dashboard extends Component {
                         <th>Breed</th>
                         <th>Color</th>
                         <th>Checked in</th>
-                        <th>Actions</th>
+                        <th>Complete Checkin</th>
+                        <th>Delete</th>
                     </tr>
                 </thead>
                 {/* dummy data can eventually be deleted and replaced with mapped reducer to display db data */}
@@ -128,8 +133,8 @@ class Dashboard extends Component {
                         <td>no</td>
                             {/* <td><button onClick={() => { if (window.confirm('Are you sure you wish to delete this pet?')) this.handleDeletePet(id) }}>Delete</button>
                             <button onClick={this.handleCheckIn(id)}>Checked In</button></td> */}
-                            <td><button onClick={this.handleDeletePet}>Delete</button>
-                                <button onClick={this.handleCheckIn}>Checked In</button></td>
+                            <td><button onClick={this.handleDeletePet}>Delete</button></td>
+                            <td><button onClick={this.handleCheckIn}>Checked In</button></td>
                     </tr>
                 </tbody>
                 <tfoot>

@@ -21,6 +21,8 @@
   color: #09d3ac;
 }
 
+
+
 th {
   background-color: #4CAF50;
   color: white;
@@ -39,6 +41,7 @@ table, th, td {
 .nav {
   background-color: #4CAF50;
   overflow: hidden;
+  /* text-align: center; */
 }
 
 /* Style the links inside the navigation bar */
@@ -61,4 +64,13 @@ table, th, td {
 .nav a.active {
   background-color: #4CAF50;
   color: white;
+}
+
+.inputsDashboard {
+  text-align: center;
+ 
+}
+
+table {
+  margin: 0px auto;
 }

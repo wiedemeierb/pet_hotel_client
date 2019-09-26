@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+
 // import { HashRouter as Router } from 'react-router-dom';
 
 class ManageOwners extends Component {
@@ -63,7 +64,9 @@ class ManageOwners extends Component {
     render() {
         return (
             <>
+            <br />
             <h2>Add Owner</h2>
+            <div className="inputsDashboard">
             <input placeholder='Owner Name'
                     type="text"
                     name="owner"
@@ -71,13 +74,14 @@ class ManageOwners extends Component {
                     onChange={(event) => this.handleChangeInput(event)}
                      />
             <button onClick={this.handleSubmit}>SUBMIT</button><br/>
-            {JSON.stringify(this.state)}
+            {/* {JSON.stringify(this.state)} */}
+            <br />
             <h2>Owners</h2>
-            <table>
+                <table class="table table-striped table-bordered table-hover">
                 <thead>
                     
                         <tr >
-                            <th>owner</th>
+                            <th>Owner</th>
                             <th>Number of Pets</th>
                             <th>Action</th>
                         </tr>
@@ -90,7 +94,7 @@ class ManageOwners extends Component {
                         <tr key={each.id}>
                             <td>{each.name}</td>
                             <td>Number of Pets</td>
-                            <td><button onClick={() => this.handleDelete(each.id)}>delete</button></td>
+                            <td><button onClick={() => this.handleDelete(each.id)}>Delete</button></td>
                         </tr>
                     ))}
 
@@ -106,6 +110,7 @@ class ManageOwners extends Component {
                     </tr> */}
                 </tbody>
             </table>
+            </div>
             <br />
                 <br />
                 <br />
