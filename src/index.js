@@ -30,7 +30,7 @@ const getOwnersReducer = (state=[], action) => {
 }
 
 
-///SAGAS HERE
+///SAGAS HERE///
 function* getHistory(action) {
     try {
         let response = yield axios.get('/api/pets/all')
@@ -86,6 +86,40 @@ function* addOwner(action) {
     }
 }
 
+function* deleteOwner(action) {
+    try {
+        console.log('in deleteOwner saga, owner id:', action.payload);
+        yield axios.delete(`/ADD DELETE OWNER URL HEREEEEE/${action.payload}`)
+        yield put({
+            type: 'GET_OWNERS'
+        })
+    } catch (error) {
+        console.log('in deleteOwner saga error:', error);
+    }
+}
+
+function* deletePet(action) {
+    try {
+        console.log('in deletePet saga, pet id:', action.payload);
+        yield axios.delete(`/ADD DELETE PET URL HEREEEE/${action.payload}`)
+    } catch (error) {
+        console.log('in deletePet saga error:', error);
+    }
+}
+
+function* updateCheckIn(action) {
+    try {
+        console.log('in updateCheckIn for pet:', action.payload);
+        yield axios.put(`/ADD UPDATE CHECKIN URL HEREEEEEEE/${action.payload.id}`, action.payload)
+        yield put({
+            type: 'GET_HISTORY'
+        })
+    } catch (error) {
+        console.log('in updateCheckIn saga error:', error);
+        
+    }
+}
+
 
 const sagaMiddleware = createSagaMiddleware();
 
@@ -94,6 +128,10 @@ function* watcherSaga(){
     yield takeEvery('GET_OWNERS', getOwners)
     yield takeEvery('ADD_OWNER', addOwner)
     yield takeEvery('ADD_PET', addPet)
+    yield takeEvery('DELETE_OWNER',deleteOwner)
+    yield takeEvery('DELETE_PET', deletePet)
+    //NEED TO ADD THE DISPATCH TO HANDLECHECKIN DASHBOARD COMPONENT (AFTER THE STATE IS SET)
+    yield takeEvery('UPDATE_CHECKIN', updateCheckIn)
 }
 
 const store = createStore(
