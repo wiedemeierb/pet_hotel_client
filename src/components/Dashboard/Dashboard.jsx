@@ -35,6 +35,13 @@ class Dashboard extends Component {
             type: 'ADD_PET',
             payload: this.state
         })
+        this.setState({
+            pet_name: '',
+            pet_color: '',
+            pet_breed: '',
+            owner_name: '',
+            check_in: 'no',
+        })
     };
 
     handleDeletePet = (id) => {

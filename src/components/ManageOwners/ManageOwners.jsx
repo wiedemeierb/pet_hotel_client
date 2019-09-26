@@ -47,6 +47,9 @@ class ManageOwners extends Component {
             type: 'ADD_OWNER',
             payload: this.state
         })
+        this.setState({
+            owner: ''
+        })
     }
 
     ///DELETE AN OWNER FROM THE DB USING THEIR ID
