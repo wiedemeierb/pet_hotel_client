@@ -84,7 +84,7 @@ function* addPet(action) {
 ///GET ALL OWNERS AND NUMBER OF PETS IN DB FOR MANAGE OWNERS VIEW
 function* getOwners(action) {
     try {
-        let response = yield axios.get('/NEED TO ADD ONCE ESTABLISHED')
+        let response = yield axios.get('/api/owners/all')
         console.log('in getOwners saga:', response.data);
         yield put({
             type: 'SET_OWNERS',
@@ -123,7 +123,7 @@ function* deleteOwner(action) {
 function* deletePet(action) {
     try {
         console.log('in deletePet saga, pet id:', action.payload);
-        yield axios.delete(`/ADD DELETE PET URL HEREEEE/${action.payload}`)
+        yield axios.delete(`/api/pets/delete/${action.payload}`)
     } catch (error) {
         console.log('in deletePet saga error:', error);
     }
@@ -132,7 +132,7 @@ function* deletePet(action) {
 function* updateCheckIn(action) {
     try {
         console.log('in updateCheckIn for pet:', action.payload);
-        yield axios.put(`/ADD UPDATE CHECKIN URL HEREEEEEEE/${action.payload.id}`, action.payload)
+        yield axios.put(`/api/pets/checkin/${action.payload.id}`, action.payload)
         yield put({
             type: 'GET_HISTORY'
         })
