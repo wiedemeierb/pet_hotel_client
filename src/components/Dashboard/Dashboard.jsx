@@ -3,11 +3,22 @@ import { connect } from 'react-redux';
 // import { HashRouter as Router } from 'react-router-dom';
 
 class Dashboard extends Component {
+
+    componentDidMount(){
+        this.getHistory();
+    }
     state = {
         pet_name: '',
         pet_color: '',
         pet_breed: '',
         owner_name: '',
+        check_in: '',
+    }
+
+    getHistory = () => {
+        this.props.dispatch({
+            type: 'GET_HISTORY'
+        });
     }
 
     handleChangeForInputs = propertyName => (event) => {
