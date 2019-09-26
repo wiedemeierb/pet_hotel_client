@@ -18,12 +18,14 @@ class ManageOwners extends Component {
         })
     }
 
+    ///SET STATE WITH DATA ENTERED
     handleChangeInput = (event) => {
         this.setState({
             owner: event.target.value
         })
     }
 
+    ///SUBMIT DATA ON CLICK
     handleSubmit = () =>{
         console.log('submit clicked');
         
@@ -32,6 +34,16 @@ class ManageOwners extends Component {
             payload: this.state
         })
     }
+
+    ///DELETE AN OWNER FROM THE DB USING THEIR ID
+    handleDelete = (id) => {
+        console.log('in handleDelete for owner id:', id);
+        this.props.dispatch({
+            type: 'DELETE_OWNER',
+            payload: id
+        })
+    }
+
 
 
 
@@ -50,13 +62,29 @@ class ManageOwners extends Component {
             <h2>Owners</h2>
             <table>
                 <thead>
-                <tr>
-                    <th>Name</th>
-                    <th>Number of Pets</th>
-                    <th>Actions</th>
-                </tr>
+                    
+                        <tr >
+                            <th>owner</th>
+                            <th>Number of Pets</th>
+                            <th>Action</th>
+                        </tr>
+
+                
                 </thead>
                 <tbody>
+                    {/* MAP OWNERS STORE TO PROPS */}
+                        {/* {owners.map(each => (
+                        <tr key={each.owner_id}>
+                            <td>{each.name}</td>
+                            <td>Number of Pets</td>
+                            <td><button onClick={() => this.handleDelete(each.owner_id)}>delete</button>/td>
+                        </tr>
+                    ))} */}
+
+
+
+
+                        {/* THIS IS DUMMY DATA TO BE DELETED */}
                     <tr>
                         <td>Chris</td>
                         <td>2</td>
@@ -69,13 +97,10 @@ class ManageOwners extends Component {
     }
 }
 
-// const mapStateToProps = state => ({
-
-// });
 
 //GET OWNERS AND NUMBER OF PETS REDUCER
 const mapStateToProps = reduxStore => ({
-    reduxStore
+    owners: reduxStore.getOwnersReducer
 })
 
 export default connect(mapStateToProps)(ManageOwners);
