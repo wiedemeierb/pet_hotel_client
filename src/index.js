@@ -30,8 +30,6 @@ const getOwnersReducer = (state=[], action) => {
 }
 
 
-
-
 ///SAGAS HERE
 function* getHistory(action) {
     try {
@@ -87,8 +85,6 @@ function* addOwner(action) {
         console.log('in addOwner saga error:', error);   
     }
 }
-
-
 
 
 const sagaMiddleware = createSagaMiddleware();

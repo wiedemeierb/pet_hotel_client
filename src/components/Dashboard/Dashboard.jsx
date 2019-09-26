@@ -12,7 +12,7 @@ class Dashboard extends Component {
         pet_color: '',
         pet_breed: '',
         owner_name: '',
-        check_in: '',
+        check_in: 'no',
     }
 
     getHistory = () => {
@@ -36,9 +36,32 @@ class Dashboard extends Component {
         })
     };
 
-    
+    handleDeletePet = (id) => {
+        // console.log('handleDeletePet is clicked')
+        // this.props.dispatch({
+        //     type: 'DELETE_PET',
+        //     payload: {id: id}
+        // })
+    }
+
+    handleCheckIn = (id) => {
+        // console.log('checkedIn is clicked')
+        this.setState({
+            check_in: 'yes',
+        })
+        console.log(this.state)
+    }
 
     render(){
+        // let historyTable = this.props.reduxStore.map((allPets) => {
+        //     return(<tr key={allPets.id}>
+        //         <td>{allPets.owner.name}</td>
+        //         <td>{allPets.pet_name}</td>
+        //         <td>{allPets.pet_breed}</td>
+        //         <td>{allPets.pet_color}</td>
+        //         <td>{allPets.check_in}</td>
+        //         </tr>)
+        // })
         return(
             <>
             <h2>Dashboard Webpage</h2>
@@ -84,20 +107,16 @@ class Dashboard extends Component {
                 {/* dummy data can eventually be deleted and replaced with mapped reducer to display db data */}
                 <tbody>
                     <tr>
+                        {/* {historyTable} */}
                         <td>Chris</td>
                         <td>Charlie</td>
                         <td>Shih-tzu</td>
                         <td>Black</td>
                         <td>no</td>
-                        <td>Delete | Checked In</td>
-                    </tr>
-                    <tr>
-                        <td>Chris</td>
-                        <td>Thorin</td>
-                        <td>Rabbit</td>
-                        <td>White</td>
-                        <td>no</td>
-                        <td>Delete | Checked In</td>
+                            {/* <td><button onClick={() => { if (window.confirm('Are you sure you wish to delete this pet?')) this.handleDeletePet(id) }}>Delete</button>
+                            <button onClick={this.handleCheckIn(id)}>Checked In</button></td> */}
+                            <td><button onClick={this.handleDeletePet}>Delete</button>
+                                <button onClick={this.handleCheckIn}>Checked In</button></td>
                     </tr>
                 </tbody>
                 <tfoot>
@@ -110,8 +129,8 @@ class Dashboard extends Component {
     }
 }
 
-// const mapStateToProps = state => ({
+const mapStateToProps = reduxStore => ({
+    reduxStore
+});
 
-// });
-
-export default connect()(Dashboard);
+export default connect(mapStateToProps)(Dashboard);
