@@ -51,6 +51,10 @@ class Dashboard extends Component {
             check_in: 'yes',
         })
         console.log(this.state)
+        this.props.dispatch({
+            type: 'UPDATE_CHECKIN',
+            payload: this.state
+        })
     }
 
     handleChangeAddOwner = (event) => {

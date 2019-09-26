@@ -150,7 +150,6 @@ function* watcherSaga(){
     yield takeEvery('ADD_PET', addPet)
     yield takeEvery('DELETE_OWNER',deleteOwner)
     yield takeEvery('DELETE_PET', deletePet)
-    //NEED TO ADD THE DISPATCH TO HANDLECHECKIN DASHBOARD COMPONENT (AFTER THE STATE IS SET)
     yield takeEvery('UPDATE_CHECKIN', updateCheckIn)
 }
 
